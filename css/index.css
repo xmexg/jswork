@@ -1,0 +1,184 @@
+body {
+    width: 100%;
+    min-width: 850px;
+    height: 100vh;
+    background: #111927;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#topBar {
+    width: 100%;
+    height: 50px;
+    background: #0d141f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+#topBar>canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#topBar>div {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0 20px;
+    z-index: 1;
+}
+
+#topBar ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+#topBar a {
+    margin: 0 5px;
+    padding: 0 5px;
+    color: #025a6c;
+}
+
+#lore {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    display: none;
+    width: 30%;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 20px;
+    border: #025a6c solid 1px;
+    border-radius: 15px;
+}
+
+.formdiv {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.formdiv>text {
+    text-align: center;
+    font-size: 30px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+    color: #025a6c;
+}
+
+.formdiv>input {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    border-radius: 5px;
+    border: 2px solid #025a6c;
+    outline: none;
+    background: #111927;
+    color: #17b492;
+}
+
+.formdiv .pwd_level {
+    position: relative;
+    width: 100%;
+    height: 5px;
+    /* background: #fff; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.formdiv .pwd_level div {
+    display: flex;
+    width: 6%;
+    height: 100%;
+    margin: 0 2%;
+    /* background-color: #000; */
+    border-radius: 5px;
+}
+
+.formdiv>button {
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #025a6c;
+    outline: none;
+    background: rgb(17, 25, 39);
+    color: #17b492;
+    font-size: 1.3em;
+}
+
+.formdiv>button:hover {
+    background: rgb(27, 39, 61);
+    color: #22dbb3;
+}
+
+.formdiv>button:active {
+    background: rgb(33, 48, 75);
+    color: #24e7bd;
+}
+
+#webCon{
+    /* 占掉剩下的全部空间 */
+    flex: 1;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    align-content: center;/*垂直居中,和align-items区别在于，align-items是针对单行的，align-content是针对多行的*/
+}
+
+/* #webCon > div 的写法有bug */
+.webCon_div{
+    width: 95%;
+    height: 95%;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: #1a2332;
+    border: #249e83 solid 2px;
+}
+
+#goodsPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.goods_top{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+.goods_top>div:first-child{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.ggds_top>div:last-child{
+
+}
