@@ -43,6 +43,12 @@ $(function () {
 });
 
 
+/**
+ * 窗口大小改变时触发
+ */
+window.addEventListener("resize", function() {
+    goods_tetail_draw();
+});
 
 
 /**
@@ -57,8 +63,21 @@ function init_pwd_level() {
     }
 }
 
+// 测试使用
+function test() {
+    console.log("目前开启了test");
+    $("#goodsPage_for").hide();
+    $("#goods_detail").show();
+}
 
 window.onload = function () {
     init_pwd_level();
     topBargame();//顶栏游戏
+    // test();// 测试使用
+
+    { // goodsPage
+        $("#goodsPage_for").show();
+        $("#goods_detail").hide();
+    }
+    
 }

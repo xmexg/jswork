@@ -47,24 +47,56 @@
         <div id="webCon">
             <!-- <div id="mainPage" class="webCon_div"></div> -->
             <div id="goodsPage" class="webCon_div">
-                <div class="goodsPage_for">
-                    <div class="goods_list" v-for="(goods_item, index) in goodsList" :key="index" @click="clickgoods">
+                <div id="goodsPage_for">
+                    <div class="goods_list" v-for="(goods_item, index) in goodsList" :key="index" @click="clickgoods(index)">
                         <image class="goods_list_img" :src="goods_item.img" alt="商品图片"></image>
                         <text class="goods_list_id">{{goods_item.id}}</text>
                     </div>
                 </div>
-                <!-- <div class="goods_tetail">
+                <div id="goods_detail">
+                    <image id="goods_datail_exit" @click="pageChange" src="./media/left-c.png" alt="退出"></image>
                     <div class="goods_top">
                         <div class="goods_top_left">
-                            <image :src="goods_item.img" alt="商品图片">
+                            <div id="goods_top_left_bigImg"><image class="goodsimg" :src="goodsList[clickIndex].img" alt="商品图片"></image></div>
+                            <div id="goods_top_left_ImgList">
+                                <div class="imageshowlist" v-for="(thisimage, image_index) in goodsList[clickIndex].imgList">
+                                    <image class="goodsimg" :src="thisimage.img" @click="changeBigImg(clickIndex, image_index)"></image>
+                                </div>
+                            </div>
                         </div>
-                        <div class="goods_top_right"></div>
+                        <div class="goods_top_right">
+                            <div class="goodsname">{{goodsList[clickIndex].name}}</div>
+                            <div class="goodsprice">￥ {{goodsList[clickIndex].price}}</div>
+                            <a class="goodslink" :href="goodsList[clickIndex].webLink">网页链接</a>
+                            <hr width="100%">
+                            <div class="buy">
+                                <input type="number" id="buycount" min="1" max="100" placeholder="1" value="1">
+                                <button id="buybutton" @click="addcart">加入购物车</button>
+                            </div>
+                            
+                            <div class="evaluation">
+                                <div>
+                                    <div>商品评价</div>
+                                    <div></div>
+                                </div>
+                                <div id="showeva">
+                                    <div class="showeva_div" v-for="(eva, eva_ind) in goodsList[clickIndex].evaluation">
+                                        <div class="showeva_div_star">
+                                            <!-- eva.star是多少,就画几个星星 -->
+                                            评分: <image v-for="star in eva.star" src="./media/star.png" alt="星星"></image>
+                                        </div>
+                                        <div class="showeva_div_con">{{eva.content}}</div>
+                                    </div>
+                                </div>
+                                <div class="writeeva">
+                                    <input class="writeeva_e" type="number" id="evastar" min="1" max="5" placeholder="星">
+                                    <input class="writeeva_e" type="text" id="evacontent" placeholder="请输入评价内容" style="flex: 1">
+                                    <button class="writeeva_e" id="eva" @click="addeva">提交评价</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="goods_bottom">
-                        <div class="goods_bottom_top"></div>
-                        <div class="goods_bottom_bottom"></div>
-                    </div>
-                </div> -->
+                </div>
             </div>
             <!-- <div id="shoppingPage" class="webCon_div"></div> -->
         </div>

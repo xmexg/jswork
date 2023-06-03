@@ -1,8 +1,13 @@
 const canvas = document.getElementById('canvas');
 const topbar = document.getElementById('topBar');
 const ctx = canvas.getContext('2d');
-const canvasWidth = canvas.width = topbar.offsetWidth;
-const canvasHeight = canvas.height = topbar.offsetHeight;
+let canvasWidth = canvas.width = topbar.offsetWidth;
+let canvasHeight = canvas.height = topbar.offsetHeight;
+
+window.addEventListener("resize", function() {
+    canvasWidth = canvas.width = topbar.offsetWidth;
+    canvasHeight = canvas.height = topbar.offsetHeight;
+});
 
 var bird = new Image();
 bird.src = 0;
