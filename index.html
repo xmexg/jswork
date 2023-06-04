@@ -7,7 +7,10 @@
         <link slot="icon" rel="icon" href="./media/x.png" type="image/x-icon">
         <script src="./js/jquery-3.7.0.js" type="text/javascript"></script>
         <script src="./js/jquery-ui-1.13.2.custom/jquery-ui.js" type="text/javascript"></script>
-        <script src="./js/easy-typer-js-2.1.0/src/lib/index.js"></script>
+        <!-- <script src="./js/easy-typer-js-2.1.0/src/lib/index.js" type="text/javascript"></script> -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/easy-typer-js@1.0.3/easy-typer-min.js"></script> -->
+        <!-- <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script> -->
+        <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
         <script src="./js/vue.global.js" type="text/javascript"></script>
     </head>
     <body>
@@ -53,7 +56,7 @@
                     </div>
                 </div>
                 <div id="goods_detail">
-                    <image id="goods_datail_exit" @click="pageChange" src="./media/left-c.png" alt="退出"></image>
+                    <image id="goods_datail_exit" @click="exitgoods" src="./media/left-c.png" alt="退出"></image>
                     <div class="goods_top">
                         <div class="goods_top_left">
                             <div id="goods_top_left_bigImg"><image id="goods_top_left_bigImg_img" class="goodsimg" :src="goodsList[clickIndex].img" alt="商品图片"></image></div>
@@ -65,7 +68,8 @@
                         </div>
                         <div class="goods_top_right">
                             <!-- <div class="goodsname">{{goodsList[clickIndex].name}}</div> -->
-                            <div class="goodsname">{{typerobj.out}}</div>
+                            <!-- <div class="goodsname">{{typerobj.out}}</div> -->
+                            <div class="goodsname" id="goodsname">{{typerobj.out}}</div>
                             <div class="goodsprice">￥ {{goodsList[clickIndex].price}}</div>
                             <a class="goodslink" :href="goodsList[clickIndex].webLink">网页链接</a>
                             <hr width="100%">

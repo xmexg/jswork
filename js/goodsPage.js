@@ -1,7 +1,5 @@
 
 const { createApp } = Vue
-// 导入打字机EasyTyper
-import EasyTyper from 'easy-typer-js-2.1.0/src/lib/index.js';
 
 
 const goods = createApp({
@@ -320,10 +318,48 @@ const goods = createApp({
         }
     },
     methods: {
-        clickgoods: function (index) {
+        typed_name: function (type) {
+            let index = this.clickIndex;
+            console.log("打字机:" + type);
+            let typed;
+            switch (type) {
+                case "start":
+                    typed = new TypeIt('#goodsname', {
+                        strings: [this.goodsList[index].name],
+                        typeSpeed: 50,
+                        backSpeed: 50,
+                        loop: true
+                    }).go();
+                    break;
+                case "destroy":
+                    console.log("销毁");
+                    typed.reset();
+                    break;
+            }
+        },
+        clickgoods: function (index) {// 进入商品详情页
             this.clickIndex = index;
             this.pageChange();
-            const typed = new EasyTyper(this.typerobj, this.goodsList[index].name, fn, hooks);
+            this.typed_name("start");
+            // const typed = new EasyTyper(this.typerobj, this.goodsList[index].name, fn, hooks);
+            // new EasyTyper(this.typerobj, this.goodsList[index].name,
+            //     instance => {
+            //         // 回调函数
+            //         // 此回调一般用于获取新的数据然后循环输出
+            //         // instance { 实例EasyTyper }
+            //         console.log(instance) // 打印出实例对象
+            //     }, (output, instance) => {
+            //         // 钩子函数
+            //         // output { 当前帧的输出内容 }
+            //         // instance { 实例EasyTyper }
+            //         // 通过钩子函数动态更新dom元素
+            //         document.getElementById('goodsname').innerHTML = `${output}`
+            //     })
+
+        },
+        exitgoods: function () {// 退出商品详情页
+            this.pageChange();
+            this.typed_name("destroy");
         },
         changeBigImg: function (index, image_index) {
             this.goodsList[index].img = this.goodsList[index].imgList[image_index].img;

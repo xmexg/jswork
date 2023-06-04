@@ -142,6 +142,8 @@ body {
 #webCon{
     /* 占掉剩下的全部空间 */
     flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     position: relative;
     justify-content: center;
@@ -153,6 +155,9 @@ body {
 .webCon_div{
     width: 95%;
     height: 95%;
+    min-height: 730px;
+    overflow-y: auto;
+    overflow-x: hidden;
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
     background: #1a2332;
