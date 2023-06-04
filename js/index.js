@@ -42,14 +42,33 @@ $(function () {
     });
 });
 
+/**
+ * 网页内容切换
+ */
+$(function () {
+    $("#proul a").each(function(index, elem) {
+        $(this).click(() => {
+            console.log("点击了"+index);
+            $("#webCon").toggle("drop",function(){
+                $("#goodsPage").toggle(index == 0);
+                $("#cartPage").toggle(index == 1);
+                $("#aboutPage").toggle(index == 2)
+            });
+            $("#webCon").toggle("drop");
+        });
+    });
+});
+
+/**
+ * 商品详情页的打字机
+ */
+
 
 /**
  * 窗口大小改变时触发
  */
 window.addEventListener("resize", function() {
-    goods_tetail_draw();
 });
-
 
 /**
  * 初始化相关
@@ -63,17 +82,15 @@ function init_pwd_level() {
     }
 }
 
-// 测试使用
-function test() {
-    console.log("目前开启了test");
-    $("#goodsPage_for").hide();
-    $("#goods_detail").show();
-}
-
 window.onload = function () {
     init_pwd_level();
     topBargame();//顶栏游戏
-    // test();// 测试使用
+
+    { // 商品，购物车，关于页初始化
+        $("#goodsPage").show();
+        $("#cartPage").hide();
+        $("#aboutPage").hide();
+    }
 
     { // goodsPage
         $("#goodsPage_for").show();

@@ -247,6 +247,7 @@ body {
     padding-bottom: 80%;
     position: relative;
     border: #24e7bd solid 1px;
+    overflow: hidden;
 }
 
 .goods_top_left > div:last-child{

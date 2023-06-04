@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="./css/index.css">
         <link slot="icon" rel="icon" href="./media/x.png" type="image/x-icon">
         <script src="./js/jquery-3.7.0.js" type="text/javascript"></script>
+        <script src="./js/jquery-ui-1.13.2.custom/jquery-ui.js" type="text/javascript"></script>
+        <script src="./js/easy-typer-js-2.1.0/src/lib/index.js"></script>
         <script src="./js/vue.global.js" type="text/javascript"></script>
     </head>
     <body>
@@ -14,12 +16,10 @@
                 <img src="./media/x_0f0.png" height="100%" alt="logo">
             </div>
             <div id="nav">
-                <ul>
-                    <li><a href="#">首页</a></li>
-                    <li><a href="#">购物车</a></li>
-                    <li><a href="#">产品中心</a></li>
-                    <li><a href="#">新闻中心</a></li>
-                    <li><a href="#">联系我们</a></li>
+                <ul id="proul">
+                    <li><a id="proindex" href="#">首页</a></li>
+                    <li><a id="procart" href="#">购物车</a></li>
+                    <li><a id="proabout" href="#">关于</a></li>
                 </ul>
             </div>
             <div id="login">
@@ -45,7 +45,6 @@
             </div>
         </div>
         <div id="webCon">
-            <!-- <div id="mainPage" class="webCon_div"></div> -->
             <div id="goodsPage" class="webCon_div">
                 <div id="goodsPage_for">
                     <div class="goods_list" v-for="(goods_item, index) in goodsList" :key="index" @click="clickgoods(index)">
@@ -57,7 +56,7 @@
                     <image id="goods_datail_exit" @click="pageChange" src="./media/left-c.png" alt="退出"></image>
                     <div class="goods_top">
                         <div class="goods_top_left">
-                            <div id="goods_top_left_bigImg"><image class="goodsimg" :src="goodsList[clickIndex].img" alt="商品图片"></image></div>
+                            <div id="goods_top_left_bigImg"><image id="goods_top_left_bigImg_img" class="goodsimg" :src="goodsList[clickIndex].img" alt="商品图片"></image></div>
                             <div id="goods_top_left_ImgList">
                                 <div class="imageshowlist" v-for="(thisimage, image_index) in goodsList[clickIndex].imgList">
                                     <image class="goodsimg" :src="thisimage.img" @click="changeBigImg(clickIndex, image_index)"></image>
@@ -65,7 +64,8 @@
                             </div>
                         </div>
                         <div class="goods_top_right">
-                            <div class="goodsname">{{goodsList[clickIndex].name}}</div>
+                            <!-- <div class="goodsname">{{goodsList[clickIndex].name}}</div> -->
+                            <div class="goodsname">{{typerobj.out}}</div>
                             <div class="goodsprice">￥ {{goodsList[clickIndex].price}}</div>
                             <a class="goodslink" :href="goodsList[clickIndex].webLink">网页链接</a>
                             <hr width="100%">
@@ -98,7 +98,8 @@
                     </div>
                 </div>
             </div>
-            <!-- <div id="shoppingPage" class="webCon_div"></div> -->
+            <div id="cartPage" class="webCon_div"></div>
+            <div id="aboutPage" class="webCon_div"></div>
         </div>
     </body>
     
