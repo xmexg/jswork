@@ -8,12 +8,13 @@
     <link slot="icon" rel="icon" href="./media/x.png" type="image/x-icon">
     <script src="./js/jquery-3.7.0.js" type="text/javascript"></script>
     <script src="./js/jquery-ui-1.13.2.custom/jquery-ui.js" type="text/javascript"></script>
-    <script src="./js/typeit-8.7.1.js"></script>
-
+    <script src="./js/typeit-8.7.1.js" type="text/javascript"></script>
     <script src="./js/vue.global.js" type="text/javascript"></script>
 </head>
 
 <body>
+    <div id="showToash"></div>
+    <script src="./js/oneko.js" type="text/javascript"></script>
     <div id="topBar">
         <div id="logo">
             <img src="./media/x_0f0.png" height="100%" alt="logo">
@@ -110,9 +111,13 @@
         <div id="cartPage" class="webCon_div">
             <div>
                 <div> ☆ 购物车</div>
+                <div>
+                    <!-- <div id="showtotalcartinfo">总计{{buylist.lenght}}条订单,共{{}}元</div> -->
+                    <button id="paybutton" @click="paybutton">立即购买</button>
+                </div>
             </div>
             <div>
-                <div class="cartPage_goods_for" v-for="(buyitem, buyindex) in test">
+                <div class="cartPage_goods_for" v-for="(buyitem, buyindex) in buylist">
                     <!-- {{test}} -->
                     <div class="cartPage_goods">
                         <div class="cartPage_goods_img">
@@ -124,13 +129,13 @@
                                 <div class="cartPage_goods_price">单价: ￥ {{buyitem.shopping.price}}</div>
                                 <div class="cartPage_goods_count">
                                     <button class="cartPage_goods_count_ele"
-                                        @click="buyitem.num--"> ← </button>
+                                        @click="changenum('dec', buyindex)"> < </button>
                                     <input class="cartPage_goods_count_ele" type="number" min="1" max="100"
                                         v-model="buyitem.num">
                                     <button class="cartPage_goods_count_ele"
-                                        @click="buyitem.num++"> → </button>
+                                        @click="changenum('add', buyindex)"> > </button>
                                 </div>
-                                <div class="cartPage_goods_total">总价: ￥ {{buyitem.shopping.price * buyitem.num}}</div>
+                                <div class="cartPage_goods_total">总价: ￥ {{buyitem.prices.toFixed(2)}}</div>
                             </div>
                         </div>
                         <div class="cartPage_goods_right">
@@ -144,8 +149,8 @@
     </div>
 </body>
 
+
 <script src="./js/goodsPage.js" type="text/javascript"></script>
-<script src="./js/cartPage.js" type="text/javascript"></script>
 <script src="./js/index_tool.js" type="text/javascript"></script>
 <script src="./js/index_topBar_game.js" type="text/javascript" defer></script>
 <script src="./js/index.js" type="text/javascript" defer></script>

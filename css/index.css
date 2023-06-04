@@ -10,6 +10,25 @@ body {
     overflow: hidden;
 }
 
+#showToash{
+    position: fixed;
+    top: 2%;
+    left: 2%;
+    max-height: 90%;
+    overflow: hidden;
+    z-index: 10;
+}
+.toash{
+    transition: all 0.5s;
+    backdrop-filter: blur(7px);
+    /* display: none; */
+    padding: 20px;
+    border-radius: 5px;
+    border: #0f0 solid 1px;
+    background: rgba(0,0,0,0.5);
+    color: #0f0;
+}
+
 #topBar {
     width: 100%;
     height: 50px;
@@ -17,7 +36,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
 }
 
 #topBar>canvas{
@@ -26,7 +44,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 9;
+    pointer-events: none;
 }
 
 #topBar>div {
@@ -416,6 +435,7 @@ body {
 #cartPage{
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 #cartPage > div:first-child{
@@ -426,11 +446,23 @@ body {
     border-bottom: #24e7bd solid 1px;
     display: flex;
     align-items: flex-end;
+    justify-content: space-between;
+}
+
+#paybutton{
+    background: #6c216d;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-top-left-radius: 20px;
 }
 
 #cartPage > div:last-child{
+    position: absolute;
+    top: 5%;
     width: 100%;
-    height: 95%;
+    max-height: 95%;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -442,7 +474,7 @@ body {
     width: 90%;
     height: 100px;
     padding: 20px 0;
-    margin: 10px 0;
+    margin-top: 10px;
     /* border-bottom: #24e7bd solid 1px; */
 }
 
@@ -493,6 +525,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
 }
+
 
 .cartPage_goods_del{
     color: #c12c1f;

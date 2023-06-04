@@ -48,7 +48,6 @@ $(function () {
 $(function () {
     $("#proul a").each(function(index, elem) {
         $(this).click(() => {
-            console.log("点击了"+index);
             $("#webCon").toggle("drop",function(){
                 $("#goodsPage").toggle(index == 0);
                 $("#cartPage").toggle(index == 1);

@@ -91,3 +91,13 @@ function bisectionColor( num ) {
     }
     return colors;
 }
+
+function Toash( msg ) {
+    let toash = document.createElement("div");
+    toash.classList.add("toash");
+    toash.innerHTML = msg;
+    document.getElementById("showToash").appendChild(toash);
+    setTimeout(() => {
+        document.getElementById("showToash").removeChild(toash);
+    }, 5000);
+}

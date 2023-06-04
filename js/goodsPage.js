@@ -332,7 +332,7 @@ const goods = createApp({
                     ],
                 },
             ],
-            buylist: [{num: 2}],
+            buylist: [],
             typeItInstances: {}, // 存储 TypeIt 实例的对象
         };
     },
@@ -374,15 +374,17 @@ const goods = createApp({
         addcart: function () {
             let buynum = $("#buycount").val();
             if (this.goodsList[this.clickIndex].disBuy != undefined) {
-                alert(this.goodsList[this.clickIndex].disBuy);
+                Toash(this.goodsList[this.clickIndex].disBuy);
                 return;
             }
+            let allprice = this.goodsList[this.clickIndex].price * buynum;
             let buyinfo = {
                 shopping: this.goodsList[this.clickIndex],
                 num: buynum,
+                prices: allprice,
             };
             this.buylist.push(buyinfo);
-            alert("已加入购物车");
+            Toash("已加入购物车");
         },
         addeva: function () {
             let star = $("#evastar");
@@ -398,18 +400,39 @@ const goods = createApp({
             content.val("");
             alert("评论成功");
         },
-        pageChange: function () {
+        pageChange: function () {// 商品页面切换
             $("#goodsPage_for").toggle(300);
             $("#goods_detail").toggle(300);
         },
-    },
-    provide() {// 参考https://cn.vuejs.org/guide/components/provide-inject.html#working-with-reactivity
-      return {
-        buylist: computed(() => goods.buylist)// 将 buylist 暴露给全局
-      }
+        changenum: function (type, buyindex) {// 购买数量加减按钮
+            switch (type) {
+                case "add":
+                    if(this.buylist[buyindex].num >= 100) return Toash("购买数量已达最大值");
+                        this.buylist[buyindex].num++;
+                        this.buylist[buyindex].prices = this.buylist[buyindex].shopping.price * this.buylist[buyindex].num;
+                    break;
+                case "dec":
+                    if(this.buylist[buyindex].num <= 1) return Toash("购买数量已达最小值");
+                        this.buylist[buyindex].num--;
+                        this.buylist[buyindex].prices = this.buylist[buyindex].shopping.price * this.buylist[buyindex].num;
+                    break;
+            }
+        },
+        delcart: function (buyindex) {// 删除购物车中的商品
+            this.buylist.splice(buyindex, 1);
+        },
+        paybutton: function () {// 购物车结算按钮
+            if(this.buylist.length == 0) return Toash("购物车为空");
+            let allprice = 0;
+            this.buylist.forEach(item => {
+                allprice += item.prices;
+            });
+            Toash("假装支付成功<br>总价为:" + allprice + "元");
+            this.buylist = [];
+        }
     }
 });
-goods.mount("#goodsPage");
+goods.mount("#webCon");
 
 // 将 buylist 暴露给全局
 // goods.provide('buylist', computed(() => goods.buylist))
