@@ -74,7 +74,6 @@
                     </div>
                     <div class="goods_top_right">
                         <div class="goodsname">{{goodsList[clickIndex].name}}</div>
-                        <div class="goodsname">{{typerobj.out}}</div>
                         <div class="goodsprice">￥ {{goodsList[clickIndex].price}}</div>
                         <a class="goodslink" :href="goodsList[clickIndex].webLink">网页链接</a>
                         <hr width="100%">
@@ -108,12 +107,45 @@
                 </div>
             </div>
         </div>
-        <div id="cartPage" class="webCon_div"></div>
+        <div id="cartPage" class="webCon_div">
+            <div>
+                <div> ☆ 购物车</div>
+            </div>
+            <div>
+                <div class="cartPage_goods_for" v-for="(buyitem, buyindex) in test">
+                    <!-- {{test}} -->
+                    <div class="cartPage_goods">
+                        <div class="cartPage_goods_img">
+                            <image class="cartPage_goods_img_img" :src="buyitem.shopping.img" alt="商品图片"></image>
+                        </div>
+                        <div class="cartPage_goods_mid">
+                            <div class="cartPage_goods_min_name">{{buyitem.shopping.name}}</div>
+                            <div class="cartPage_goods_min_price">
+                                <div class="cartPage_goods_price">单价: ￥ {{buyitem.shopping.price}}</div>
+                                <div class="cartPage_goods_count">
+                                    <button class="cartPage_goods_count_ele"
+                                        @click="buyitem.num--"> ← </button>
+                                    <input class="cartPage_goods_count_ele" type="number" min="1" max="100"
+                                        v-model="buyitem.num">
+                                    <button class="cartPage_goods_count_ele"
+                                        @click="buyitem.num++"> → </button>
+                                </div>
+                                <div class="cartPage_goods_total">总价: ￥ {{buyitem.shopping.price * buyitem.num}}</div>
+                            </div>
+                        </div>
+                        <div class="cartPage_goods_right">
+                            <div class="cartPage_goods_del" @click="delcart(buyindex)">删除</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="aboutPage" class="webCon_div"></div>
     </div>
 </body>
 
 <script src="./js/goodsPage.js" type="text/javascript"></script>
+<script src="./js/cartPage.js" type="text/javascript"></script>
 <script src="./js/index_tool.js" type="text/javascript"></script>
 <script src="./js/index_topBar_game.js" type="text/javascript" defer></script>
 <script src="./js/index.js" type="text/javascript" defer></script>
