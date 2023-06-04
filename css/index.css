@@ -158,6 +158,7 @@ body {
     background: #1a2332;
     border: #249e83 solid 2px;
     position: relative;
+    overflow: hidden;
 }
 
 #goodsPage{
@@ -212,6 +213,7 @@ body {
 }
 
 #goods_detail{
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
     width: 100%;

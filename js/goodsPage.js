@@ -361,8 +361,9 @@ const goods = createApp({
       this.goodsList.forEach((item) => {
         const instance = new TypeIt("#goodsList-" + item.id, {
           strings: item.id,
-          speed: 50,
+          speed: 200,
           lifeLike: true,
+          loop: true
         });
 
         this.typeItInstances[item.id] = instance; // 将 TypeIt 实例保存到 typeItInstances 对象中
