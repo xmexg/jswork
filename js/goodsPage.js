@@ -427,12 +427,9 @@ const goods = createApp({
             this.buylist.forEach(item => {
                 allprice += item.prices;
             });
-            Toash("假装支付成功<br>总价为:" + allprice + "元");
+            Toash("假装支付成功<br>总价为:" + allprice.toFixed(2) + "元");
             this.buylist = [];
         }
     }
 });
 goods.mount("#webCon");
-
-// 将 buylist 暴露给全局
-// goods.provide('buylist', computed(() => goods.buylist))

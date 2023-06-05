@@ -121,19 +121,20 @@
                     <!-- {{test}} -->
                     <div class="cartPage_goods">
                         <div class="cartPage_goods_img">
-                            <image class="cartPage_goods_img_img" :src="buyitem.shopping.img" alt="商品图片"></image>
+                            <!-- <div class="cartPage_goods_img_div" v-for="(imgs, imgs_ind) in buyitem.shopping.imgList"> -->
+                            <div class="cartPage_goods_img_div">
+                                <image class="cartPage_goods_img_img" v-for="(imgs, imgs_ind) in buyitem.shopping.imgList" :src="imgs.img" alt="商品图片"></image>
+                            </div>
+                            <!-- </div> -->
                         </div>
                         <div class="cartPage_goods_mid">
                             <div class="cartPage_goods_min_name">{{buyitem.shopping.name}}</div>
                             <div class="cartPage_goods_min_price">
                                 <div class="cartPage_goods_price">单价: ￥ {{buyitem.shopping.price}}</div>
                                 <div class="cartPage_goods_count">
-                                    <button class="cartPage_goods_count_ele"
-                                        @click="changenum('dec', buyindex)"> < </button>
-                                    <input class="cartPage_goods_count_ele" type="number" min="1" max="100"
-                                        v-model="buyitem.num">
-                                    <button class="cartPage_goods_count_ele"
-                                        @click="changenum('add', buyindex)"> > </button>
+                                    <button class="cartPage_goods_count_ele" @click="changenum('dec', buyindex)"> < </button>
+                                    <input class="cartPage_goods_count_ele" type="number" min="1" max="100" v-model="buyitem.num">
+                                    <button class="cartPage_goods_count_ele" @click="changenum('add', buyindex)"> > </button>
                                 </div>
                                 <div class="cartPage_goods_total">总价: ￥ {{buyitem.prices.toFixed(2)}}</div>
                             </div>
@@ -145,10 +146,10 @@
                 </div>
             </div>
         </div>
-        <div id="aboutPage" class="webCon_div"></div>
+        <div id="aboutPage" class="webCon_div">
+        </div>
     </div>
 </body>
-
 
 <script src="./js/goodsPage.js" type="text/javascript"></script>
 <script src="./js/index_tool.js" type="text/javascript"></script>
