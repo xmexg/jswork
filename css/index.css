@@ -53,6 +53,7 @@ body {
     height: 100%;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     padding: 0 20px;
     margin: 0 20px;
     z-index: 1;
@@ -60,14 +61,39 @@ body {
 
 #topBar ul {
     display: flex;
-    flex-direction: row;
+    height: 100%;
+    float: left;
     list-style: none;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+    align-content: center;
+}
+
+#proul li{
+    display: flex;
+    align-items: center;
+    z-index: 1;
 }
 
 #topBar a {
-    margin: 0 5px;
-    padding: 0 5px;
+    padding: 0 10px;
+    font-size: 1.1em;
     color: #025a6c;
+    text-align: center;
+}
+
+#proul_slider{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33%;
+    height: 100%;
+    background: #eebefa;
+    border-radius: 5px;
+    transition: all 0.5s;
+    z-index: 0;
 }
 
 #lore {
@@ -115,6 +141,10 @@ body {
     outline: none;
     background: #111927;
     color: #17b492;
+}
+
+.formdiv>input:focus {
+    border: 2px solid #2db91b;
 }
 
 .formdiv .pwd_level {
@@ -449,6 +479,25 @@ body {
     justify-content: space-between;
 }
 
+#loc{
+    font-size: 10px;
+}
+
+#loc select{
+    color: #0f0;
+    background: rgba(0,0,0,0);
+    outline: none;
+    font-size: 10px;
+    border: none;
+    border-bottom: #249e83 solid 1px;
+    margin: 0 5px;
+}
+
+#loc option{
+    background: #1a2332;
+    color: #31d6b2;
+}
+
 #paybutton{
     background: #6c216d;
     color: #fff;
@@ -573,5 +622,22 @@ body {
 }
 
 #aboutPage{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: #15aabf;
+    font-size: 1.1em;
+}
+
+#aboutPage > div:first-child{
+    color: #2db91b;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#aboutPage > div{
+    text-align: center;
 }

@@ -333,7 +333,11 @@ const goods = createApp({
                 },
             ],
             buylist: [],
-            typeItInstances: {}, // 存储 TypeIt 实例的对象
+            typeItInstances: {}, // 存储 TypeIt 实例的对象,
+            locObject: areaData,// 地区数据
+            chooseprovince: "110000",// 选择的省份
+            choosecity: "110100",// 选择的市
+            choosecounty: "",// 选择的县
         };
     },
     mounted() {
@@ -389,7 +393,9 @@ const goods = createApp({
         addeva: function () {
             let star = $("#evastar");
             let content = $("#evacontent");
-            let s = star.val();
+            let s = parseInt(star.val());
+            if (s > 5) s=5;
+            if (s < 1) s=1;
             console.log("评分:" + s);
             let evaluationitem = {
                 star: s,
@@ -398,7 +404,7 @@ const goods = createApp({
             this.goodsList[this.clickIndex].evaluation.push(evaluationitem);
             star.val("");
             content.val("");
-            alert("评论成功");
+            Toash("评价成功");
         },
         pageChange: function () {// 商品页面切换
             $("#goodsPage_for").toggle(300);
@@ -407,14 +413,14 @@ const goods = createApp({
         changenum: function (type, buyindex) {// 购买数量加减按钮
             switch (type) {
                 case "add":
-                    if(this.buylist[buyindex].num >= 100) return Toash("购买数量已达最大值");
-                        this.buylist[buyindex].num++;
-                        this.buylist[buyindex].prices = this.buylist[buyindex].shopping.price * this.buylist[buyindex].num;
+                    if (this.buylist[buyindex].num >= 100) return Toash("购买数量已达最大值");
+                    this.buylist[buyindex].num++;
+                    this.buylist[buyindex].prices = this.buylist[buyindex].shopping.price * this.buylist[buyindex].num;
                     break;
                 case "dec":
-                    if(this.buylist[buyindex].num <= 1) return Toash("购买数量已达最小值");
-                        this.buylist[buyindex].num--;
-                        this.buylist[buyindex].prices = this.buylist[buyindex].shopping.price * this.buylist[buyindex].num;
+                    if (this.buylist[buyindex].num <= 1) return Toash("购买数量已达最小值");
+                    this.buylist[buyindex].num--;
+                    this.buylist[buyindex].prices = this.buylist[buyindex].shopping.price * this.buylist[buyindex].num;
                     break;
             }
         },
@@ -422,14 +428,23 @@ const goods = createApp({
             this.buylist.splice(buyindex, 1);
         },
         paybutton: function () {// 购物车结算按钮
-            if(this.buylist.length == 0) return Toash("购物车为空");
+            if (this.buylist.length == 0) return Toash("购物车为空");
             let allprice = 0;
             this.buylist.forEach(item => {
                 allprice += item.prices;
             });
             Toash("假装支付成功<br>总价为:" + allprice.toFixed(2) + "元");
             this.buylist = [];
-        }
+        },
+        fun_chooseprovince: function (e) {// 地区选择
+            this.chooseprovince = e.target.value;
+        },
+        fun_choosecity: function (e) {// 选择市
+            this.choosecity = e.target.value;
+        },
+        fun_choosecounty: function (e) {// 选择县
+            this.choosecounty = e.target.value;
+        },
     }
 });
 goods.mount("#webCon");

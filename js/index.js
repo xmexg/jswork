@@ -45,15 +45,25 @@ $(function () {
 /**
  * 网页内容切换
  */
+let checkpageindex = 0;
 $(function () {
     $("#proul a").each(function(index, elem) {
         $(this).click(() => {
+            checkpageindex = index;
+            $("#proul_slider").animate({left: 33*index+"%"}, 100);
             $("#webCon").toggle("drop",function(){
                 $("#goodsPage").toggle(index == 0);
                 $("#cartPage").toggle(index == 1);
                 $("#aboutPage").toggle(index == 2)
             });
             $("#webCon").toggle("drop");
+        });
+        $(this).mouseenter(function() {
+            $("#proul_slider").animate({left: 33*index+"%"}, 50)
+        });
+        $(this).mouseleave(function() {
+            if(checkpageindex != index)
+                $("#proul_slider").animate({left: 33*checkpageindex+"%"}, 50)
         });
     });
 });
