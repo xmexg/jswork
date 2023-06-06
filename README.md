@@ -2,4 +2,4 @@
 js作业
 
 # 演示
-<video src="./res/demo.mp4"></video>
+  文件过大无法演示，见[视频](./res/demo.mp4)  
